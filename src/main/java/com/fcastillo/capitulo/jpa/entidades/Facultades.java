@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author fcastillo
  */
 @Entity
-//@EntityListeners({FacultadListener.class})
+@EntityListeners({FacultadListener.class})
 @Table(name = "Facultades")
 @XmlRootElement
 @NamedQueries({
