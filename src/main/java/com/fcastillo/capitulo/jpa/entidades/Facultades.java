@@ -5,18 +5,21 @@
  */
 package com.fcastillo.capitulo.jpa.entidades;
 
+import com.fcastillo.capitulo.jpa.oyentes.FacultadListener;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -26,6 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author fcastillo
  */
 @Entity
+//@EntityListeners({FacultadListener.class})
 @Table(name = "Facultades")
 @XmlRootElement
 @NamedQueries({
@@ -37,7 +41,7 @@ public class Facultades implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "idfacultad")
     private Integer idfacultad;
@@ -118,5 +122,15 @@ public class Facultades implements Serializable {
     public String toString() {
         return "com.fcastillo.capitulo.jpa.entidades.Facultades[ idfacultad=" + idfacultad + " ]";
     }
-    
+
+    @PrePersist
+    public void prePersistencia() {
+        // Convertimos a mayusculas
+        setNombre(getNombre().toUpperCase());
+        
+        // Obtenemos los tres primeros caracteres
+        String abreviatura = getNombre().substring(0, 3);
+        
+        setAbreviatura(abreviatura);
+    }
 }

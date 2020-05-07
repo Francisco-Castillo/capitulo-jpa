@@ -30,7 +30,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Carreras.findAll", query = "SELECT c FROM Carreras c"),
     @NamedQuery(name = "Carreras.findByIdcarrera", query = "SELECT c FROM Carreras c WHERE c.idcarrera = :idcarrera"),
     @NamedQuery(name = "Carreras.findByNombre", query = "SELECT c FROM Carreras c WHERE c.nombre = :nombre"),
-    @NamedQuery(name = "Carreras.findByTipo", query = "SELECT c FROM Carreras c WHERE c.tipo = :tipo")})
+    @NamedQuery(name = "Carreras.findByTipo", query = "SELECT c FROM Carreras c WHERE c.tipo = :tipo"),
+    @NamedQuery(name = "findByIdFacultad", query = "SELECT c FROM Carreras c WHERE c.idfacultad.idfacultad = ?1")})
 public class Carreras implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -118,5 +119,5 @@ public class Carreras implements Serializable {
     public String toString() {
         return "com.fcastillo.capitulo.jpa.entidades.Carreras[ idcarrera=" + idcarrera + " ]";
     }
-    
+
 }
