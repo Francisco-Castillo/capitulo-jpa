@@ -6,9 +6,11 @@
     <class>com.fcastillo.capitulo.jpa.entidades.Facultades</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/Universidad"/>
-      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.user" value=""/>
       <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="Pancho1414!"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+      <property name="eclipselink.logging.level" value="FINE"/>
+      <property name="eclipselink.logging.parameters" value="true"/>
     </properties>
   </persistence-unit>
 </persistence>
