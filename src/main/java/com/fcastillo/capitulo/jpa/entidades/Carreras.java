@@ -46,6 +46,7 @@ public class Carreras implements Serializable {
     @Basic(optional = false)
     @Column(name = "tipo")
     private int tipo;
+    
     @JoinColumn(name = "idfacultad", referencedColumnName = "idfacultad")
     @ManyToOne(optional = false)
     private Facultades idfacultad;
@@ -57,10 +58,11 @@ public class Carreras implements Serializable {
         this.idcarrera = idcarrera;
     }
 
-    public Carreras(Integer idcarrera, String nombre, int tipo) {
+    public Carreras(Integer idcarrera, String nombre, int tipo, Facultades facultad) {
         this.idcarrera = idcarrera;
         this.nombre = nombre;
         this.tipo = tipo;
+        this.idfacultad = facultad;
     }
 
     public Integer getIdcarrera() {

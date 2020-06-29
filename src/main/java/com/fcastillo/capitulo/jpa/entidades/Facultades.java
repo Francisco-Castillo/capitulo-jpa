@@ -50,7 +50,8 @@ public class Facultades implements Serializable {
     private String nombre;
     @Column(name = "abreviatura")
     private String abreviatura;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idfacultad")
+    
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "idfacultad")
     private List<Carreras> carrerasList;
 
     public Facultades() {
